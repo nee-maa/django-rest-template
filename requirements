@@ -1,0 +1,5 @@
+django-redis
+mysqlclient
+django-celery-results
+pycryptodome
+celery
