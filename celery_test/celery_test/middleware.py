@@ -1,5 +1,6 @@
 import base64
 import json
+import re
 from io import BytesIO
 from .aes import AESCipher
 from .rsa import RSAEncryption
@@ -11,7 +12,10 @@ class CustomMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
-    def __call__(self, request):
+    def __call__(self,  request):
+        if not re.search("/api/", request.path):
+            return self.get_response(request)
+
         if request.method != 'POST':
             return HttpResponseNotAllowed(permitted_methods=['post'])
 
