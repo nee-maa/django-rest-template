@@ -67,3 +67,5 @@ class Unfollow(APIView):
         except Exception as e:
             print(e)
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
